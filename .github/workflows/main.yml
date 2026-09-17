@@ -15,6 +15,10 @@ jobs:
           echo "My first GitHub Actions job"
           ls -ltra
           cat README.md
+          
+      - name: Install cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
 
-      - name: Generate ASCII artwork    
-        run: cowsay -f dragon "Run for cover, I am a dragon....RAWR" >> dragon.txt
+      - name: Generate ASCII artwork
+        run: cowsay -f dragon "Run for cover, I am a dragon...RAWR"
+      
