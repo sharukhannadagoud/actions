@@ -15,3 +15,6 @@ jobs:
 
       - name: List files
         run: ls
+
+      - name: rerad files
+        uses: cat README.md
