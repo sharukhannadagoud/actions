@@ -13,8 +13,8 @@ jobs:
       - name: Welcome message
         run: |
           echo "My first GitHub Actions job"
-          ls ltr
+          ls -ltra
           cat README.md
-          
+
       - name: Generate ASCII artwork    
         run: cowsay -f dragon "Run for cover, I am a dragon....RAWR" >> dragon.txt
