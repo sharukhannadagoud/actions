@@ -9,4 +9,4 @@ jobs:
     steps:
           
       - name: generate ascii
-        run: ./.github/workflows/ascii.sh
+        run: ./ascii.sh
