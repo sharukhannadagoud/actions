@@ -3,7 +3,7 @@ name: workflow ascii art
 on: push
 
 jobs:
-  ascii workflow:
+  ascii_workflow:
     runs-on: ubuntu-latest
 
     steps:
