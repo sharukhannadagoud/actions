@@ -1,6 +1,10 @@
-name: workflow ascii art
+name: Workflow ASCII Art
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   ascii_workflow:
@@ -12,16 +16,35 @@ jobs:
 
       - name: Generate ASCII
         run: bash .github/workflows/ascii.sh
-  
+
+      - name: Display Dragon File
+        run: cat dragon.txt
+
+      - name: Upload Dragon Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dragon-file
+          path: dragon.txt
+
   test_job_2:
     needs: ascii_workflow
     runs-on: ubuntu-latest
 
     steps:
-      - name: sleep for seconds
+      - name: Download Dragon Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dragon-file
+
+      - name: Sleep for seconds
         run: sleep 10
 
-      - name: test files exits
+      - name: Test File Exists
+        run: |
+          ls -ltra
+          test -f dragon.txt
+
+      - name: Test Dragon Content
         run: grep -i "dragon" dragon.txt
 
   deploy_job_3:
@@ -29,9 +52,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: read the files
+      - name: Download Dragon Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dragon-file
+
+      - name: Read the File
         run: cat dragon.txt
 
-      - name: Deploy  
-        run: echo deploying.....
-  
+      - name: Deploy
+        run: echo "Deploying....."
