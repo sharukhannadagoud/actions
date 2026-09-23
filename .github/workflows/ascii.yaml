@@ -12,3 +12,24 @@ jobs:
 
       - name: Generate ASCII
         run: bash .github/workflows/ascii.sh
+  
+  test_job_2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: sleep for seconds
+        run: sleep 10
+
+      - name: test files exits
+        run: grep -i "dragon" dragon.txt
+
+  deploy_job_3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: read the files
+        run: cat dragon.txt
+
+      - name: Deploy  
+        run: echo deploying.....
+  
