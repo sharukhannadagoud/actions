@@ -14,6 +14,7 @@ jobs:
         run: bash .github/workflows/ascii.sh
   
   test_job_2:
+    needs: ascii_workflow
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +25,7 @@ jobs:
         run: grep -i "dragon" dragon.txt
 
   deploy_job_3:
+    needs: test_job_2
     runs-on: ubuntu-latest
 
     steps:
