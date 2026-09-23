@@ -1,8 +1,7 @@
 name: Workflow ASCII Art
 
 on:
-  schedule:
-    - cron: '* * * * *'
+  workflow_dispatch:
 
 jobs:
   ascii_workflow:
