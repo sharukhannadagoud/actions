@@ -13,12 +13,14 @@ jobs:
       matrix:
         os: [ubuntu-latest, ubuntu-20.04, windows-latest]
         images: [hello-world, alpine]
+
         include:
-          - images: amd64/alpine
-            os: ubuntu-20.04
+          - os: ubuntu-20.04
+            images: amd64/alpine
+
         exclude:
-          - images: alpine
-            os: windows-latest
+          - os: windows-latest
+            images: alpine
 
     runs-on: ${{ matrix.os }}
 
@@ -27,4 +29,4 @@ jobs:
         run: docker info
 
       - name: Run Docker Image
-        run: docker run ${{ matrix.image }}
+        run: docker run ${{ matrix.images }}
