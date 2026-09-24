@@ -8,10 +8,17 @@ jobs:
   deploy:
     strategy:
       fail-fast: false
+      max-paralle: 2
 
       matrix:
         os: [ubuntu-latest, ubuntu-20.04, windows-latest]
-        image: [hello-world, alpine]
+        images: [hello-world, alpine]
+        include:
+          - images: amd64/alpine
+            os: ubuntu-20.04
+        exclude:
+          - images: alpine
+            os: windows-latest
 
     runs-on: ${{ matrix.os }}
 
