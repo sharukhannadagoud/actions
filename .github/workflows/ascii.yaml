@@ -1,7 +1,7 @@
 name: Workflow ASCII Art
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   ascii_workflow:
